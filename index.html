@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Семейный бюджет: учёт доходов и расходов в браузере, без регистрации и без отправки данных.">
+  <title>Семейный бюджет</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2317375e'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='16' fill='white' font-family='Arial'%3E%E2%82%BD%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("family_budget_theme_v1");
+
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
+      } catch (error) {
+        /* Если хранилище недоступно, остаётся светлая тема */
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a class="brand" href="index.html">Семейный бюджет</a>
+      <nav class="header-nav" aria-label="Основное меню">
+        <a class="nav-link" href="#how">Как пользоваться</a>
+        <a class="button primary" href="app.html">Открыть калькулятор</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Локально в браузере</span>
+        <h1>Доходы, расходы и лимит месяца в одном месте</h1>
+        <p class="subtitle">
+          Небольшой семейный калькулятор: записывайте операции,
+          смотрите остаток и выгружайте месяц в CSV.
+          Цифры никуда не отправляются.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="app.html">Перейти к учёту</a>
+          <a class="button secondary" href="#how">Три шага</a>
+        </div>
+      </div>
+
+      <aside class="preview" aria-label="Пример показателей за месяц">
+        <h2>Пример месяца</h2>
+        <div class="stat income">
+          <span>Доходы</span>
+          <strong>120&nbsp;000&nbsp;₽</strong>
+        </div>
+        <div class="stat expense">
+          <span>Расходы</span>
+          <strong>74&nbsp;500&nbsp;₽</strong>
+        </div>
+        <div class="stat balance">
+          <span>Остаток</span>
+          <strong>45&nbsp;500&nbsp;₽</strong>
+        </div>
+      </aside>
+    </section>
+
+    <h2 class="section-title">Что уже умеет калькулятор</h2>
+    <section class="features">
+      <article class="panel feature">
+        <h3>Операции</h3>
+        <p>Доходы и расходы по категориям: добавить, изменить или удалить запись.</p>
+      </article>
+      <article class="panel feature">
+        <h3>Лимит</h3>
+        <p>Месячный потолок расходов и полоска, которая желтеет ближе к концу лимита.</p>
+      </article>
+      <article class="panel feature">
+        <h3>Категории</h3>
+        <p>Сводка расходов: сколько ушло на продукты, жильё, транспорт и остальное.</p>
+      </article>
+      <article class="panel feature">
+        <h3>Файл CSV</h3>
+        <p>История за месяц скачивается таблицей, которую открывает Excel.</p>
+      </article>
+    </section>
+
+    <section class="panel" id="how">
+      <h2>Как пользоваться</h2>
+      <ol class="steps">
+        <li>Откройте калькулятор и выберите отчётный месяц.</li>
+        <li>Поставьте лимит расходов, если хотите следить за потолком.</li>
+        <li>Добавляйте операции. Итоги, диаграмма и таблица обновятся сразу.</li>
+      </ol>
+    </section>
+
+    <p class="site-footer">
+      Данные хранятся только в этом браузере. Для копии используйте «Скачать CSV» в калькуляторе.
+    </p>
+  </div>
+
+  <button
+    type="button"
+    id="themeToggle"
+    class="theme-toggle"
+    aria-pressed="false"
+    aria-label="Включить тёмную тему">
+    <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+    <span class="theme-toggle-text">Тёмная</span>
+  </button>
+
+  <script src="js/theme.js"></script>
+</body>
+</html>
